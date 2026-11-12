@@ -1,13 +1,20 @@
 # Project
 
-Smart Campus room availability checker with one room, fictional bookings, and a fixed current time.
+Smart Campus room availability checker with four fictional rooms, attendee/equipment filtering, and a fixed current time.
 
 # Project Structure
 
-- src/lib/booking.ts: pure availability validation logic.
-- src/lib/time.ts: time conversion helpers.
-- src/lib/booking.test.ts: existing Vitest regression tests.
-- src/App.tsx: application UI and fictional booking fixtures.
+- src/lib/booking.ts: pure availability validation logic (MAX_DURATION_MIN constant, NaN/Infinity guards).
+- src/lib/time.ts: time conversion helpers (HH:MM to minutes).
+- src/lib/rooms.ts: fictional four-room catalog with bookings.
+- src/lib/roomFilters.ts: attendee parsing, capacity/equipment filtering, equipment options, selection fallback.
+- src/lib/booking.test.ts: 26 Vitest tests for booking rules (AC1–AC5, non-finite times).
+- src/lib/roomFilters.test.ts: 19 tests for capacity/equipment filtering, input validation, immutability.
+- src/lib/roomSelection.test.ts: 13 tests for attendee parsing, equipment options, selection fallback.
+- src/lib/rooms.test.ts: 7 tests for the room catalog.
+- src/components/RoomSelector.tsx: attendee input, equipment toggle buttons, matching room list.
+- src/App.tsx: application UI, state management, time inputs, result panel.
+- src/App.test.tsx: 6 rendered UI tests (jsdom) covering room listing, filtering, overlap, and blocked rooms.
 
 # Constraints
 
